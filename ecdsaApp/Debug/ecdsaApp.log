@@ -1,7 +1,0 @@
-﻿  Encryptor.cpp
-c:\users\venti\source\repos\ecdsaapp\ecdsaapp\encryptor.cpp(216): warning C4101: Status: неиспользованная локальная переменная
-  FIle.cpp
-c:\users\venti\source\repos\ecdsaapp\ecdsaapp\file.cpp(59): warning C4244: инициализация: преобразование "std::streamoff" в "size_t", возможна потеря данных
-  ecdsaApp.cpp
-  Создание кода...
-c:\users\venti\source\repos\ecdsaapp\ecdsaapp\encryptor.cpp(212): error C4716: Encryptor::CreateKeys: должна возвращать значение
