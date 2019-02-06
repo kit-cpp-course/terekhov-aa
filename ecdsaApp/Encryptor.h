@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #define WIN32_NO_STATUS
 #include <windows.h>
@@ -15,23 +15,23 @@
 class Encryptor
 {
 protected: 
-	NTSTATUS privateKey;
-	NTSTATUS publicKey;
-	SECURITY_STATUS         secStatus;
-
-	DWORD                   KeyBlobLength = 0;
-	DWORD                   SignatureBlobLength = 0;
-
-	PBYTE                   KeyBlob = NULL;
-	PBYTE                   SignatureBlob = NULL;
-
+	/*
+		Ключ обработчика необходимый для подписи
+	*/
 	NCRYPT_KEY_HANDLE       NcryptKeyHandle = 0;
+	/*
+		Ключ обработчика необходимый для подтверждения подписи
+	*/
 	BCRYPT_KEY_HANDLE       BcryptKeyHandle = NULL;
 public:
-	Encryptor();
-	~Encryptor();
-
+	/*
+		Выводит сообщение об ошибке на экран
+	*/
 	void ReportError(_In_    DWORD       dwErrCode);
+
+	/*
+		Подсчет хэша сообщения
+	*/
 	NTSTATUS ComputeHash(
 		_In_reads_bytes_(DataLength)
 		PBYTE           Data,
@@ -39,7 +39,13 @@ public:
 		_Outptr_result_bytebuffer_maybenull_(*DataDigestLengthPointer)
 		PBYTE           *DataDigestPointer,
 		_Out_       DWORD           *DataDigestLengthPointer);
+	/*
+		Создание и запись ключей в буфер памяти
+	*/
 	bool CreateKeys(std::string key);
+	/*
+		Подпись сообщения
+	*/
 	PBYTE SignHash(
 		_In_reads_bytes_(MessageLength)
 		PBYTE           MessageToSign,
@@ -51,8 +57,10 @@ public:
 		PBYTE               *KeyBlobPointer,
 		_Out_       DWORD               *KeyBlobLengthPointer
 	);
-	SECURITY_STATUS
-		VerifySignature(
+	/*
+		Проверка подписи сообщения
+	*/
+	SECURITY_STATUS VerifySignature(
 			_In_reads_bytes_(MessageLength)
 			PBYTE           MessageToVerify,
 			_In_       DWORD           MessageLength,

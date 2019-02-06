@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "pch.h"
 #include "Encryptor.h"
 #include "FIle.h"
@@ -8,7 +8,9 @@
 #include <regex>
 #include <string>
 
-
+/*
+	Контроллер команд консольного приложения
+*/
 bool controller(char command[]);
 
 

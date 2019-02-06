@@ -2,10 +2,6 @@
 #include "Encryptor.h"
 
 
-Encryptor::Encryptor()
-{
-}
-
 //----------------------------------------------------------------------------
 //
 //  ReportError
@@ -285,9 +281,4 @@ SECURITY_STATUS Encryptor::VerifySignature(PBYTE MessageToVerify, DWORD MessageL
 		0);
 
 	return Status;
-}
-
-
-Encryptor::~Encryptor()
-{
 }
